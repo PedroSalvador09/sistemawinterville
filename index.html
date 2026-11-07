@@ -127,6 +127,7 @@
     <span class="glint" style="left:44%; top:72%; --gd:2.1s;"></span>
   </div>
 
+  <div class="hero-content">
   <div class="container hero-inner">
     <p class="eyebrow reveal">Perfumaria árabe &amp; importada</p>
     <p class="tagline-script reveal" style="--d:1">Seu perfume. <em>Sua assinatura.</em></p>
@@ -139,8 +140,14 @@
       Qualidade premium, entrega rápida e atendimento direto pelo WhatsApp.
     </p>
     <div class="hero-cta reveal" style="--d:3">
-      <a href="#catalogo" class="btn btn-gold">Ver catálogo</a>
+      <a href="#catalogo" class="btn btn-gold btn-ringed">Ver catálogo</a>
       <a id="heroWaLink" target="_blank" rel="noopener" class="btn btn-ghost">Falar no WhatsApp</a>
+      <span class="cta-note" aria-hidden="true">
+        <svg class="cta-note-arrow" viewBox="0 0 70 50">
+          <path class="draw" d="M8 6 C 30 2, 54 16, 50 32" fill="none" stroke="#e7d6ab" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        <span class="cta-note-text">é rapidinho</span>
+      </span>
     </div>
     <div class="hero-stats reveal" style="--d:4">
       <div><strong data-counter="7">0</strong><span>Categorias</span></div>
@@ -148,6 +155,18 @@
       <div><strong data-counter="100">0</strong><span>% importado</span></div>
     </div>
   </div>
+
+  <div class="hero-showcase reveal" style="--d:5">
+    <div class="hero-showcase-note" aria-hidden="true">
+      <svg class="showcase-arrow" viewBox="0 0 90 70">
+        <path class="draw" d="M12 8 C 60 0, 82 24, 70 58" fill="none" stroke="#e7d6ab" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
+      <span class="showcase-note-text">Mais vendidos</span>
+    </div>
+    <div class="hero-carousel" id="heroCarousel" aria-hidden="true"></div>
+  </div>
+  </div>
+
   <div class="hero-scroll" aria-hidden="true"><span></span></div>
 </section>
 
@@ -278,5 +297,6 @@
 
 <script src="js/data.js"></script>
 <script src="js/main.js"></script>
+<script src="js/hero-carousel.js"></script>
 </body>
 </html>

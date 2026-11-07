@@ -187,6 +187,7 @@ h1,h2,h3{ font-family: var(--font-display); font-weight:700; margin:0; color: va
   100%{ transform: translateY(-110vh) translateX(20px); opacity:0; }
 }
 
+.hero-content{ position:relative; z-index:2; width:100%; }
 .hero-inner{ position:relative; z-index:2; text-align:center; padding: 90px 24px 60px; }
 .hero h1{
   color: var(--white);
@@ -217,17 +218,16 @@ h1,h2,h3{ font-family: var(--font-display); font-weight:700; margin:0; color: va
 /* ---------- Hero spraying bottle ---------- */
 .hero-bottle{
   position:absolute;
-  top:50%; right: clamp(-40px, 2vw, 60px);
-  transform: translateY(-50%);
-  width: clamp(200px, 20vw, 300px);
+  top: 128px; right: clamp(-30px, 2vw, 64px);
+  width: clamp(170px, 16vw, 240px);
   aspect-ratio: 200 / 320;
   z-index: 1;
   animation: bottleFloat 6.5s ease-in-out infinite;
   pointer-events: none;
 }
 @keyframes bottleFloat{
-  0%,100%{ transform: translateY(-50%); }
-  50%{ transform: translateY(calc(-50% - 12px)); }
+  0%,100%{ transform: translateY(0); }
+  50%{ transform: translateY(-12px); }
 }
 .hero-bottle-svg{ position:relative; z-index:2; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.45)); }
 .hero-bottle-glow{
@@ -318,6 +318,100 @@ h1,h2,h3{ font-family: var(--font-display); font-weight:700; margin:0; color: va
 }
 @keyframes scrollDot{
   0%{ opacity:1; top:6px; } 70%{ opacity:0; top:22px; } 100%{ opacity:0; top:6px; }
+}
+
+/* ---------- CTA dashed ring + hand-drawn notes ---------- */
+.btn-ringed{ position:relative; }
+.btn-ringed::after{
+  content:''; position:absolute; inset:-10px; border-radius:999px;
+  border: 1.5px dashed rgba(201,165,92,0.45);
+  pointer-events:none;
+}
+
+.cta-note{
+  display:none;
+  align-items:center;
+  margin-left: 2px;
+  pointer-events:none;
+}
+@media (min-width: 680px){
+  .cta-note{ display:inline-flex; }
+}
+.cta-note-arrow{ width:54px; height:40px; flex-shrink:0; }
+.cta-note-text{
+  font-family: var(--font-script); font-weight:600;
+  color: var(--gold-light); font-size:1.15rem;
+  margin-left:-8px; transform: rotate(-4deg); white-space:nowrap;
+}
+
+.draw{
+  stroke-dasharray: 260;
+  stroke-dashoffset: 260;
+  animation: drawIn 1.3s ease 1.4s forwards;
+}
+@keyframes drawIn{ to{ stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce){
+  .draw{ animation: none !important; stroke-dashoffset: 0 !important; }
+}
+
+/* ---------- Hero showcase: curved auto-scrolling product carousel ---------- */
+.hero-showcase{
+  position: relative;
+  width: 100%;
+  margin-top: clamp(28px, 5vw, 56px);
+  padding-bottom: clamp(50px, 6vw, 80px);
+}
+.hero-showcase-note{
+  position:absolute; left: 3%; top: -54px; z-index:2;
+  display:flex; flex-direction:column; align-items:flex-start; gap:0;
+  pointer-events:none;
+}
+.showcase-arrow{ width:72px; height:56px; transform: scaleX(-1); }
+.showcase-note-text{
+  font-family: var(--font-script); font-weight:600; font-size:1.4rem;
+  color: var(--gold-light); transform: rotate(6deg); margin-top:-6px;
+}
+@media (max-width: 760px){
+  .hero-showcase-note{ display:none; }
+}
+
+.hero-carousel{
+  position: relative;
+  width: 100%;
+  height: clamp(190px, 26vw, 300px);
+  overflow: hidden;
+  cursor: grab;
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.hero-carousel.dragging{ cursor: grabbing; }
+
+.hero-card{
+  position: absolute;
+  top: 50%; left: 50%;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--black);
+  box-shadow: 0 18px 34px rgba(0,0,0,0.38);
+  will-change: transform, width, height;
+}
+.hero-card-media{ position:absolute; inset:0; }
+.hero-card-media::after{
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.55), transparent 55%);
+}
+.hero-card-bottle{
+  position:relative; z-index:1;
+  width:36%; display:block; margin:16% auto 0;
+  filter: drop-shadow(0 10px 14px rgba(0,0,0,0.35));
+}
+.hero-card-label{
+  position:absolute; left:0; right:0; bottom:0; z-index:2;
+  padding: 10px 12px 9px;
+  font-size: .68rem; font-weight:700; letter-spacing:.2px;
+  color: var(--gold-light);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 }
 
 /* ---------- Marquee ---------- */

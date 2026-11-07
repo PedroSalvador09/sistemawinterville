@@ -280,6 +280,39 @@
   );
   revealEls.forEach((el) => io.observe(el));
 
+  /* ---------------- Hero parallax (continuous-scroll feel) ---------------- */
+  const heroGlowEl = document.querySelector(".hero-glow");
+  const heroParticlesEl = document.querySelector(".hero-particles");
+  const heroInnerEl = document.querySelector(".hero-inner");
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  if (!prefersReducedMotion) {
+    let parallaxTicking = false;
+    const updateParallax = () => {
+      const y = window.scrollY;
+      if (heroGlowEl) heroGlowEl.style.transform = `translateY(${y * 0.15}px)`;
+      if (heroParticlesEl)
+        heroParticlesEl.style.transform = `translateY(${y * 0.08}px)`;
+      if (heroInnerEl) {
+        heroInnerEl.style.opacity = String(Math.max(0, 1 - y / 560));
+        heroInnerEl.style.transform = `translateY(${Math.min(y * 0.18, 70)}px)`;
+      }
+      parallaxTicking = false;
+    };
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!parallaxTicking) {
+          parallaxTicking = true;
+          requestAnimationFrame(updateParallax);
+        }
+      },
+      { passive: true }
+    );
+  }
+
   /* ---------------- Init ---------------- */
   renderProducts();
 })();
