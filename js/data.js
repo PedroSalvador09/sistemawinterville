@@ -27,12 +27,12 @@ const CATEGORIES = [
 
 const PRODUCTS = [
   // Masculinos
-  { code: "014", name: "Adyan Sharf", category: "masculinos", price: 225.0, image: null },
+  { code: "014", name: "Adyan Sharf", category: "masculinos", price: 225.0, image: "assets/products/adyan-sharf.jpg" },
   { code: null, name: "Aquilo", category: "masculinos", price: 0, image: "assets/products/aquilo.jpg" },
   { code: "020", name: "Asad Black", category: "masculinos", price: 0, image: "assets/products/asad-black.jpg" },
   { code: "001", name: "Asad Elixir", category: "masculinos", price: 0, image: "assets/products/asad-elixir.jpg" },
   { code: "006", name: "Attar al Wesal", category: "masculinos", price: 0, image: "assets/products/attar-al-wesal.jpg" },
-  { code: "005", name: "Attar al Wesal Gold", category: "masculinos", price: 235.0, image: null },
+  { code: "005", name: "Attar al Wesal Gold", category: "masculinos", price: 235.0, image: "assets/products/attar-al-wesal-gold.jpg" },
 
   // Femininos
   { code: "024", name: "Amber Rouge", category: "femininos", price: 560.0, image: "assets/products/amber-rouge.jpg" },
