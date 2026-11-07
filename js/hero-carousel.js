@@ -18,19 +18,24 @@
     outros: ["#0b0b0c", "#3a3a3d"],
   };
 
-  // Curated in-stock showcase: one per category first, then fill the rest.
+  // Curated in-stock showcase: prefer products with a real photo, one per
+  // category first, then fill the rest; fall back to no-photo items last.
   const showcase = (() => {
+    const inStock = PRODUCTS.filter((p) => p.price > 0);
+    const withPhoto = inStock.filter((p) => p.image);
+    const withoutPhoto = inStock.filter((p) => !p.image);
+
     const seen = new Set();
     const picks = [];
-    PRODUCTS.forEach((p) => {
-      if (p.price > 0 && !seen.has(p.category)) {
+    withPhoto.forEach((p) => {
+      if (!seen.has(p.category)) {
         picks.push(p);
         seen.add(p.category);
       }
     });
-    PRODUCTS.forEach((p) => {
+    [...withPhoto, ...withoutPhoto].forEach((p) => {
       if (picks.length >= 10) return;
-      if (p.price > 0 && picks.indexOf(p) === -1) picks.push(p);
+      if (picks.indexOf(p) === -1) picks.push(p);
     });
     return picks.length ? picks : PRODUCTS.slice(0, 6);
   })();
@@ -54,6 +59,7 @@
     el.className = "hero-card";
     el.innerHTML =
       '<div class="hero-card-media"></div>' +
+      '<img class="hero-card-photo" alt="" loading="lazy" />' +
       bottleIconSVG() +
       '<div class="hero-card-label"></div>';
     wrap.appendChild(el);
@@ -61,6 +67,8 @@
       el,
       slot: i - SLOT_COUNT / 2,
       media: el.querySelector(".hero-card-media"),
+      img: el.querySelector(".hero-card-photo"),
+      bottle: el.querySelector(".hero-card-bottle"),
       label: el.querySelector(".hero-card-label"),
       product: null,
     });
@@ -79,6 +87,11 @@
     const tone = TONES[p.category] || TONES.outros;
     card.media.style.background = `linear-gradient(160deg, ${tone[0]}, ${tone[1]})`;
     card.label.textContent = p.name;
+    card.el.classList.toggle("has-photo", Boolean(p.image));
+    card.img.src = p.image || "";
+    card.img.alt = p.name;
+    card.img.style.display = p.image ? "block" : "none";
+    card.bottle.style.display = p.image ? "none" : "block";
   }
 
   let width = 0;

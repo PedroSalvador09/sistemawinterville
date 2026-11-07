@@ -132,6 +132,12 @@
       </svg>`;
   }
 
+  function mediaMarkup(product) {
+    return product.image
+      ? `<img class="card-photo" src="${product.image}" alt="${product.name}" loading="lazy" />`
+      : bottleSVG();
+  }
+
   function createCard(product, index) {
     const isOut = product.price === 0;
     const tone = TONES[product.category] || TONES.outros;
@@ -139,14 +145,14 @@
       CATEGORIES.find((c) => c.slug === product.category)?.label || "";
 
     const card = document.createElement("article");
-    card.className = "product-card" + (isOut ? " is-out" : "");
+    card.className = "product-card" + (isOut ? " is-out" : "") + (product.image ? " has-photo" : "");
     card.style.animationDelay = `${Math.min(index, 12) * 45}ms`;
 
     card.innerHTML = `
       <div class="card-media" style="--tone-a:${tone[0]};--tone-b:${tone[1]}">
         ${product.code ? `<span class="badge badge-code">Cód. ${product.code}</span>` : ""}
         ${isOut ? `<div class="soldout-ribbon">Esgotado</div>` : ""}
-        ${bottleSVG()}
+        ${mediaMarkup(product)}
       </div>
       <div class="card-body">
         <p class="card-cat">${catLabel}</p>
@@ -210,7 +216,8 @@
     const isOut = product.price === 0;
     const tone = TONES[product.category] || TONES.outros;
     modalMedia.style.background = `linear-gradient(160deg, ${tone[0]}, ${tone[1]})`;
-    modalMedia.innerHTML = bottleSVG();
+    modalMedia.classList.toggle("has-photo", Boolean(product.image));
+    modalMedia.innerHTML = mediaMarkup(product);
     modalCat.textContent =
       CATEGORIES.find((c) => c.slug === product.category)?.label || "";
     modalName.textContent = product.name;

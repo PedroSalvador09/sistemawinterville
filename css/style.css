@@ -398,7 +398,7 @@ h1,h2,h3{ font-family: var(--font-display); font-weight:700; margin:0; color: va
 }
 .hero-card-media{ position:absolute; inset:0; }
 .hero-card-media::after{
-  content:''; position:absolute; inset:0;
+  content:''; position:absolute; inset:0; z-index:2;
   background: linear-gradient(0deg, rgba(0,0,0,0.55), transparent 55%);
 }
 .hero-card-bottle{
@@ -406,6 +406,12 @@ h1,h2,h3{ font-family: var(--font-display); font-weight:700; margin:0; color: va
   width:36%; display:block; margin:16% auto 0;
   filter: drop-shadow(0 10px 14px rgba(0,0,0,0.35));
 }
+.hero-card-photo{
+  position:absolute; inset:0; z-index:1;
+  width:100%; height:100%; object-fit:cover; object-position:center;
+  display:none;
+}
+.hero-card.has-photo{ background:#fff; }
 .hero-card-label{
   position:absolute; left:0; right:0; bottom:0; z-index:2;
   padding: 10px 12px 9px;
@@ -527,6 +533,13 @@ h1,h2,h3{ font-family: var(--font-display); font-weight:700; margin:0; color: va
   content:''; position:absolute; inset:0;
   background: linear-gradient(160deg, var(--tone-a), var(--tone-b));
 }
+.card-photo{
+  position:relative; z-index:1;
+  width:100%; height:100%; object-fit:cover; object-position:center;
+  transition: transform .6s cubic-bezier(.2,.8,.2,1);
+}
+.has-photo .card-media{ background: #fff; }
+.product-card:hover .card-photo{ transform: scale(1.06); }
 .card-media::after{
   content:''; position:absolute; top:-40%; left:-20%; width:60%; height:180%;
   background: linear-gradient(120deg, rgba(255,255,255,0.28), transparent 60%);
@@ -695,8 +708,10 @@ h1,h2,h3{ font-family: var(--font-display); font-weight:700; margin:0; color: va
   transition: transform .4s cubic-bezier(.2,.8,.2,1), opacity .4s ease;
 }
 .modal-backdrop.open .modal{ transform: translateY(0) scale(1); opacity:1; }
-.modal-media{ position:relative; display:flex; align-items:center; justify-content:center; min-height: 260px; }
+.modal-media{ position:relative; display:flex; align-items:center; justify-content:center; min-height: 260px; overflow:hidden; }
 .modal-media .bottle{ width:48%; }
+.modal-media.has-photo{ background: #fff !important; }
+.modal-media .card-photo{ width:100%; height:100%; object-fit:cover; }
 .modal-body{ padding: 34px 30px; display:flex; flex-direction:column; gap:8px; }
 .modal-cat{ font-size:.7rem; letter-spacing:1.5px; text-transform:uppercase; color: var(--gold-deep); font-weight:700; }
 .modal-body h3{ font-size:1.6rem; }
