@@ -51,7 +51,7 @@ const PRODUCTS = [
   { code: null, name: "Body Splash Nuit Royale", category: "cremes", price: 90.0, image: "assets/products/body-splash-nuit-royale.jpg" },
 
   // Kit
-  { code: null, name: "Kit 3 Sabonetes Abelhinha da Afeer", category: "kit", price: 75.0, image: null },
+  { code: null, name: "Kit 3 Sabonetes Abelhinha da Afeer", category: "kit", price: 75.0, image: "assets/products/kit-3-sabonetes-abelhinha-da-afeer.png" },
   { code: null, name: "Kit 3 Sabonetes da Yara", category: "kit", price: 75.0, image: "assets/products/kit-3-sabonetes-da-yara.jpg" },
   { code: null, name: "Kit 3 Sabonetes Fakhar Black", category: "kit", price: 75.0, image: "assets/products/kit-3-sabonetes-fakhar-black.jpg" },
   { code: null, name: "Kit 3 Sabonetes Fakhar Rose", category: "kit", price: 75.0, image: "assets/products/kit-3-sabonetes-fakhar-rose.jpg" },
