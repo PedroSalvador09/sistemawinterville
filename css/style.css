@@ -116,6 +116,7 @@ h1,h2,h3{ font-family: var(--font-display); font-weight:700; margin:0; color: va
 }
 .header-inner{ display:flex; align-items:center; justify-content:space-between; gap: 20px; }
 .brand{ display:flex; align-items:center; gap:12px; }
+.brand-mark img{ border-radius: 10px; box-shadow: 0 2px 8px rgba(11,11,12,0.25); }
 .brand-text{ display:flex; flex-direction:column; line-height:1.15; }
 .brand-text strong{ font-family: var(--font-display); font-size:1.15rem; font-weight:700; color:var(--black); }
 .brand-text em{ font-style:normal; font-size:.66rem; letter-spacing:2.5px; text-transform:uppercase; color: var(--gold-deep); }
@@ -608,7 +609,7 @@ h1,h2,h3{ font-family: var(--font-display); font-weight:700; margin:0; color: va
 .about-frame-logo{
   background: radial-gradient(120% 100% at 50% 30%, var(--cream-2), var(--cream) 70%);
 }
-.about-frame-logo svg{ filter: drop-shadow(0 18px 26px rgba(11,11,12,0.22)); }
+.about-frame-logo img{ filter: drop-shadow(0 18px 26px rgba(11,11,12,0.22)); }
 @keyframes floatSlow{
   0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-14px); }
 }
@@ -648,7 +649,7 @@ h1,h2,h3{ font-family: var(--font-display); font-weight:700; margin:0; color: va
   padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 .footer-logo-full{ display:block; width: min(190px, 60%); margin-bottom: 18px; }
-.footer-logo-full svg{ display:block; width:100%; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.35)); }
+.footer-logo-full img{ display:block; width:100%; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.35)); }
 .footer-brand p{ margin-top:4px; font-size:.88rem; line-height:1.7; color: rgba(255,255,255,0.55); max-width: 280px; }
 .footer-col h3{
   color: var(--gold-light); font-family: var(--font-body); font-size: .8rem;

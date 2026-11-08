@@ -64,7 +64,7 @@ const PRODUCTS = [
   { code: "052", name: "Jardin de Rêve 30ml", category: "miniaturas", price: 0, image: "assets/products/jardin-de-reve-30ml.jpg" },
   { code: null, name: "Jean Lowe Immortal 30ml", category: "miniaturas", price: 80.0, image: "assets/products/jean-lowe-immortal-30ml.jpg" },
   { code: null, name: "Jean Lowe Noir", category: "miniaturas", price: 80.0, image: "assets/products/jean-lowe-noir.jpg" },
-  { code: "054", name: "Love Collection Herba 30ml", category: "miniaturas", price: 80.0, image: null },
+  { code: "054", name: "Love Collection Herba 30ml", category: "miniaturas", price: 80.0, image: "assets/products/love-collection-herba-30ml.jpg" },
 
   // Decants
   { code: null, name: "Decant 10ml Issey Miyake Sport", category: "decants", price: 65.0, image: "assets/products/decant-10ml-issey-miyake-sport.jpg" },
